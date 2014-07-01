@@ -1,0 +1,6 @@
+E:\Documents\GitHub\Bulls-and-Cows-2014\BullsAndCows\bin\Debug\BullsAndCows.exe.config
+E:\Documents\GitHub\Bulls-and-Cows-2014\BullsAndCows\bin\Debug\BullsAndCows.exe
+E:\Documents\GitHub\Bulls-and-Cows-2014\BullsAndCows\bin\Debug\BullsAndCows.pdb
+E:\Documents\GitHub\Bulls-and-Cows-2014\BullsAndCows\obj\Debug\BullsAndCows.csprojResolveAssemblyReference.cache
+E:\Documents\GitHub\Bulls-and-Cows-2014\BullsAndCows\obj\Debug\BullsAndCows.exe
+E:\Documents\GitHub\Bulls-and-Cows-2014\BullsAndCows\obj\Debug\BullsAndCows.pdb

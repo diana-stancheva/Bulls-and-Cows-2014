@@ -1,0 +1,5 @@
+E:\Documents\GitHub\Bulls-and-Cows-2014\Bulls-and-Cows-5\bin\Debug\BullsCows.exe
+E:\Documents\GitHub\Bulls-and-Cows-2014\Bulls-and-Cows-5\bin\Debug\BullsCows.pdb
+E:\Documents\GitHub\Bulls-and-Cows-2014\Bulls-and-Cows-5\obj\x86\Debug\KPK_DOMASHNO.csprojResolveAssemblyReference.cache
+E:\Documents\GitHub\Bulls-and-Cows-2014\Bulls-and-Cows-5\obj\x86\Debug\BullsCows.exe
+E:\Documents\GitHub\Bulls-and-Cows-2014\Bulls-and-Cows-5\obj\x86\Debug\BullsCows.pdb

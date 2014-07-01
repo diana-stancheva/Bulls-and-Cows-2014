@@ -95,13 +95,12 @@ namespace BullsCows
             if (klasirane.Count() > 0)
             {
                 Console.WriteLine("Scoreboard:");
+
                 int i = 1;
+
                 foreach (var t in klasirane)
                 {
                     Console.WriteLine("{0}. {1} --> {2} guesses", i, t.Value, t.Key);
-
-
-
                 }
             }
             else
