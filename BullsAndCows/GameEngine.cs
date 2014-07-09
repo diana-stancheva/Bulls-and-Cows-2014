@@ -38,12 +38,12 @@
                     StartNewGame();
                     break;
                 case "help":
-
                     Help.Cheat(number, ch, randomNumber);
                     break;
                 case "exit":
-                    return false;
-
+                    //return false;
+                    Environment.Exit(0);
+                    break;
                 default:
                     if (patt.IsMatch(line))
                     {
