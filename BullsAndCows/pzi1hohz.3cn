@@ -1,0 +1,162 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace BullsAndCows
+{
+    class GameEngine
+    {
+        static Random randomNumber = new Random();
+        private int number;//attempts;
+        private bool notCheated;
+        //private int[] number = new int[4];
+        private int attempts = 0;
+        //private bool useHelp = false;
+        //private Random generator = new Random(DateTime.Now.Millisecond);
+        //private int bulls = 0;
+        //private int cows = 0;
+        //private bool[] isHelpThisNumber = new bool[4];
+
+        static void ProcessWin()
+        {
+            Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", attempts);
+
+            if (notCheated)
+            {
+                AddToScoreboard();
+            }
+
+            StartNewGame();
+        }
+
+        static void ProcessGuess(int guess)
+        {
+            if (guess == number)
+            {
+                ProcessWin();
+            }
+            else
+            {
+                string snum = number.ToString(), sguess = guess.ToString();
+                bool[] isBull = new bool[4];
+                int bulls = 0, cows = 0;
+
+                for (int i = 0; i < 4; i++)
+                {
+                    if (isBull[i] = snum[i] == sguess[i])
+                    {
+                        bulls++;
+                    }
+                }
+
+                int[] digs = new int[10];
+
+                for (int d = 0; d < 10; d++)
+                {
+                    digs[d] = 0;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    if (!isBull[i])
+                    {
+                        digs[snum[i] - '0']++;
+                    }
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    if (!isBull[i])
+                    {
+                        if (digs[sguess[i] - '0'] > 0)
+                        {
+                            cows++;
+                            digs[sguess[i] - '0']--;
+                        }
+                    }
+                }
+
+                Console.WriteLine("\nWrong number! Bulls: {0}, Cows: {1}", bulls, cows);
+                attempts++;
+            }
+        }
+
+        static Random randomNumber = new Random();
+
+        static void StartNewGame()
+        {
+            GameInstructions();
+            number = randomNumber.Next(1000, 10000);
+            attempts = 1;
+            notCheated = true;
+            ch = "XXXX";
+        }
+
+        static string ch;
+
+        static void Cheat()
+        {
+            notCheated = false;
+
+            if (ch.Contains('X'))
+            {
+                int i;
+
+                do
+                {
+                    i = randomNumber.Next(0, 4);
+                }
+                while (ch[i] != 'X');
+
+                char[] cha = ch.ToCharArray();
+                cha[i] = number.ToString()[i];
+                ch = new string(cha);
+            }
+
+            Console.WriteLine("The number looks like {0}.", ch);
+        }
+
+        static bool ReadAction()
+        {
+            Console.WriteLine("Enter your guess or command: ");
+
+            string line = Console.ReadLine().Trim();
+            Regex patt = new Regex("[1-9][0-9][0-9][0-9]");
+
+            switch (line)
+            {
+                case "top":
+                    ShowScoreboard();
+                    break;
+                case "restart":
+                    StartNewGame();
+                    break;
+                case "help":
+
+                    Cheat();
+                    break;
+                case "exit":
+                    return false;
+
+                default:
+                    if (patt.IsMatch(line))
+                    {
+                        int guess = int.Parse(line);
+                        ProcessGuess(guess);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a 4-digit number or");
+                        Console.WriteLine("one of the commands: 'top', 'restart', 'help' or 'exit'.");
+                    }
+                    break;
+            }
+
+            return true;
+        }
+
+    }
+}

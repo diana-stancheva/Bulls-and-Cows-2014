@@ -112,7 +112,7 @@ namespace BullsCows
         static Random rr = new Random();        
         static void StartNewGame() {
             WriteAbout();
-            number = rr.Next(1000, 10000);
+            number = 1111;//rr.Next(1000, 10000);
             attempts = 1;
             notCheated = true;
             ch = "XXXX";

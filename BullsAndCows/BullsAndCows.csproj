@@ -42,7 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BullsAndCowsTest.cs" />
+    <Compile Include="GameEngine.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Help.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
