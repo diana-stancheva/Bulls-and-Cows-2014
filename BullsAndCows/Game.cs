@@ -10,7 +10,10 @@
         {
             GameEngine game = new GameEngine();
             game.StartNewGame();
-            while (game.ReadAction());
+            while (true)
+            {
+                game.ReadAction();
+            }
         }
     }
 }
