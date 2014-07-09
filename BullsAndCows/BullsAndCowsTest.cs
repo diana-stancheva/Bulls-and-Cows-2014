@@ -7,9 +7,8 @@
     {
         static void Main()
         {
-            GameEngine game = new GameEngine();
-            game.StartNewGame();
-            while (game.ReadAction());
+            Game game = new Game();
+            game.Play();
         }
     }
 }

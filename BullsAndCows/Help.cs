@@ -37,7 +37,6 @@
             Console.WriteLine("{0,-10} --> {1,10}", "help", "Help");
             Console.WriteLine("{0,-10} --> {1,16}", "exit", "Quit game\n");
             Console.WriteLine(separator);
-            //Console.WriteLine("Welcome to “Bulls and Cows” game.\nPlease try to guess my secret 4-digit number.\n");
         }
     }
 }
