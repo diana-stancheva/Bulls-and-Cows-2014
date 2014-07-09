@@ -6,7 +6,7 @@
 
     public class Scoreboard
     {
-        static readonly SortedList<int, string> scoreboard = new SortedList<int, string>();
+        private static readonly SortedList<int, string> scoreboard = new SortedList<int, string>();
 
         public void AddToScoreboard(int attempts)
         {
@@ -24,9 +24,8 @@
                 }
 
                 ShowScoreboard();
-            } 
+            }
         }
-
 
         public void ShowScoreboard()
         {
@@ -46,26 +45,5 @@
                 Console.WriteLine("The scoreboard is empty.");
             }
         }
-
-        //private string[] nicknames = new string[5];
-        //private int[] attempts = new int[5];
-
-        //public string[] ScoreNickNames
-        //{
-        //    get
-        //    {
-        //        return this.nicknames;
-        //    }
-        //}
-
-        //public int[] Attemts
-        //{
-        //    get
-        //    {
-        //        return this.attempts;
-        //    }
-        //}
-
-
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace BullsAndCows
 {
-
     using System;
     using System.Linq;
 
@@ -9,7 +8,6 @@
         public static void Cheat(int number, string ch, Random randomNumber)
         {
             //notCheated = false;
-
             if (ch.Contains('X'))
             {
                 int i;

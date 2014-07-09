@@ -6,9 +6,9 @@
 
     class GameEngine
     {
-        public Scoreboard scoreboard = new Scoreboard();
-        static string ch;
-        static readonly Random randomNumber = new Random();
+        private readonly Scoreboard scoreboard = new Scoreboard();
+        private readonly Random randomNumber = new Random();
+        private static string ch;
         private int number;
         private bool notCheated;
         private int attempts = 0;
