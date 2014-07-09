@@ -6,21 +6,33 @@
 
     public class Scoreboard
     {
-        private static readonly SortedList<int, string> scoreboard = new SortedList<int, string>();
+        private SortedList<int, string> bestScores = new SortedList<int, string>();
+
+        public SortedList<int, string> BestScores
+        {
+            get
+            {
+                return this.bestScores;
+            }
+            private set
+            {
+                this.bestScores = value;
+            }
+        }
 
         public void AddToScoreboard(int attempts)
         {
-            if (scoreboard.Count < 5 || scoreboard.ElementAt(4).Key > attempts)
+            if (BestScores.Count < 5 || BestScores.ElementAt(4).Key > attempts)
             {
                 Console.WriteLine("Please enter your name for the top scoreboard: ");
 
                 string username = Console.ReadLine().Trim();
 
-                scoreboard.Add(attempts, username);
+                BestScores.Add(attempts, username);
 
-                if (scoreboard.Count == 6)
+                if (BestScores.Count == 6)
                 {
-                    scoreboard.RemoveAt(5);
+                    BestScores.RemoveAt(5);
                 }
 
                 ShowScoreboard();
@@ -31,10 +43,10 @@
         {
             Console.WriteLine("Scoreboard:");
 
-            if (scoreboard.Count() > 0)
+            if (BestScores.Count() > 0)
             {
                 int i = 1;
-                foreach (var item in scoreboard)
+                foreach (var item in BestScores)
                 {
                     Console.WriteLine("{0}. {1} --> {2} guesses", i, item.Value, item.Key);
                     i++;
