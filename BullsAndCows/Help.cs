@@ -7,7 +7,7 @@
     {
         public static void Cheat(int number, string ch, Random randomNumber)
         {
-            //notCheated = false;
+            ////notCheated = false;
             if (ch.Contains('X'))
             {
                 int i;

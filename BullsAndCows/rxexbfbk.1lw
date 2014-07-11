@@ -20,10 +20,10 @@
         public void StartNewGame()
         {
             Help.GameInstructions();
-            this.Number = 1111;////randomNumber.Next(1000, 10000);
-            this.Attempts = 1;
-            this.NotCheated = true;
-            this.Ch = "XXXX";
+            Number = 1111;//randomNumber.Next(1000, 10000);
+            Attempts = 1;
+            NotCheated = true;
+            Ch = "XXXX";
         }
 
         public bool ReadAction()
@@ -36,16 +36,16 @@
             switch (line)
             {
                 case "top":
-                    this.scoreboard.ShowScoreboard();
+                    scoreboard.ShowScoreboard();
                     break;
                 case "restart":
-                    this.StartNewGame();
+                    StartNewGame();
                     break;
                 case "help":
-                    Help.Cheat(this.Number, this.Ch, this.randomNumber);
+                    Help.Cheat(Number, Ch, randomNumber);
                     break;
                 case "exit":
-                    ////return false;
+                    //return false;
                     Environment.Exit(0);
                     break;
                 default:
@@ -53,7 +53,7 @@
                     if (patt.IsMatch(line))
                     {
                         int guess = int.Parse(line);
-                        this.ProcessGuess(guess);
+                        ProcessGuess(guess);
                     }
                     else
                     {
@@ -69,25 +69,25 @@
 
         public void ProcessWin()
         {
-            Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", this.Attempts);
+            Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", Attempts);
 
-            if (this.NotCheated)
+            if (NotCheated)
             {
-                this.scoreboard.AddToScoreboard(this.Attempts);
+                scoreboard.AddToScoreboard(Attempts);
             }
 
-            this.StartNewGame();
+            StartNewGame();
         }
 
         public void ProcessGuess(int guess)
         {
-            if (guess == this.Number)
+            if (guess == Number)
             {
-                this.ProcessWin();
+                ProcessWin();
             }
             else
             {
-                string snum = this.Number.ToString(), sguess = guess.ToString();
+                string snum = Number.ToString(), sguess = guess.ToString();
                 bool[] isBull = new bool[4];
                 int bulls = 0, cows = 0;
 
@@ -127,7 +127,7 @@
                 }
 
                 Console.WriteLine("\nWrong number! Bulls: {0}, Cows: {1}", bulls, cows);
-                this.Attempts++;
+                Attempts++;
             }
         }
     }

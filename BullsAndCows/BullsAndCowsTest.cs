@@ -7,7 +7,7 @@
     {
         static void Main()
         {
-            Game game = new Game();
+            BullsAndCows game = new BullsAndCows();
             game.Play();
         }
     }

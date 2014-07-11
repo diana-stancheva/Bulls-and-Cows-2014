@@ -2,13 +2,13 @@
 {
     using System;
     using System.Linq;
-    using System.Text.RegularExpressions;
 
-    class Game
+    public class BullsAndCows
     {
         public void Play()
         {
             GameEngine game = new GameEngine();
+
             game.StartNewGame();
             while (true)
             {

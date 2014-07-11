@@ -14,6 +14,7 @@
             {
                 return this.bestScores;
             }
+
             private set
             {
                 this.bestScores = value;
@@ -22,20 +23,20 @@
 
         public void AddToScoreboard(int attempts)
         {
-            if (BestScores.Count < 5 || BestScores.ElementAt(4).Key > attempts)
+            if (this.BestScores.Count < 5 || this.BestScores.ElementAt(4).Key > attempts)
             {
                 Console.WriteLine("Please enter your name for the top scoreboard: ");
 
                 string username = Console.ReadLine().Trim();
 
-                BestScores.Add(attempts, username);
+                this.BestScores.Add(attempts, username);
 
-                if (BestScores.Count == 6)
+                if (this.BestScores.Count == 6)
                 {
-                    BestScores.RemoveAt(5);
+                    this.BestScores.RemoveAt(5);
                 }
 
-                ShowScoreboard();
+                this.ShowScoreboard();
             }
         }
 
@@ -43,10 +44,10 @@
         {
             Console.WriteLine("Scoreboard:");
 
-            if (BestScores.Count() > 0)
+            if (this.BestScores.Count() > 0)
             {
                 int i = 1;
-                foreach (var item in BestScores)
+                foreach (var item in this.BestScores)
                 {
                     Console.WriteLine("{0}. {1} --> {2} guesses", i, item.Value, item.Key);
                     i++;
