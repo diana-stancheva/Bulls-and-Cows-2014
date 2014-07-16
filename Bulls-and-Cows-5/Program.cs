@@ -7,10 +7,10 @@ namespace BullsCows
 {
 //tova mie purvata Csharp programa v jivota
 // obache dobre stana .i ba4ka na 100%
+//sdfsdf
     class Program
     {
         
-
 
 
         static void WriteAbout()
