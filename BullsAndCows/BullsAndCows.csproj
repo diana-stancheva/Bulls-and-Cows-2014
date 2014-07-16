@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{EEAD11BF-771B-43E8-A49D-342A4CF906BF}</ProjectGuid>
+    <ProjectGuid>{60BF064B-0BF1-479D-B9F5-F6C0AD7B3321}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>ConsoleApplication</AssemblyName>
@@ -35,22 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="nunit.core">
-      <HintPath>packages\NUnitTestAdapter.1.1\lib\nunit.core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>packages\NUnitTestAdapter.1.1\lib\nunit.core.interfaces.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>packages\NUnitTestAdapter.1.1\lib\nunit.util.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="NUnit.VisualStudio.TestAdapter">
-      <HintPath>packages\NUnitTestAdapter.1.1\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -60,17 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <None Include="StyleCop.Cache" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BullsAndCows.cs" />
     <Compile Include="BullsAndCowsTest.cs" />
-    <Compile Include="ComandExecutor.cs" />
-    <Compile Include="Command.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="Help.cs" />
-    <Compile Include="InterfaceMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scoreboard.cs" />
   </ItemGroup>
