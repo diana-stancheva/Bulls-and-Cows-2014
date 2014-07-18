@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BullsAndCows.cs" />
     <Compile Include="BullsAndCowsTest.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="ComandExecutor.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="GameEngine.cs" />

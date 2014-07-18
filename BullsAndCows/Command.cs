@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
 
-    class Command
+    public class Command
     {
         private string name;
 
