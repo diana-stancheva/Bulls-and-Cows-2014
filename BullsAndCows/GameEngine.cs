@@ -158,7 +158,7 @@
                     Console.WriteLine("You have entered invalid number!");
                     break;
                 default:
-                    if (isValidGuessNumber(command))
+                    if (IsValidGuessNumber(command))
                     {
                         int guess = int.Parse(command.Name);
 
@@ -173,7 +173,7 @@
         }
         #endregion
 
-        private bool isValidGuessNumber(Command command)
+        private bool IsValidGuessNumber(Command command)
         {
             Regex guessNumberPattern = new Regex("^(\\d{4})$");
 

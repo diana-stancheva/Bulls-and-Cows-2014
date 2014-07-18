@@ -11,21 +11,21 @@
         private const int BestScoresCount = 5;
         private const string ScoresFile = "../../scores.txt";
         private const char Delimiter = '!';
-        private SortedList<int, string> bestScores = new SortedList<int, string>();
+        //private SortedList<int, string> bestScores = new SortedList<int, string>();
         private List<Player> scores = new List<Player>();
 
-        public SortedList<int, string> BestScores
-        {
-            get
-            {
-                return this.bestScores;
-            }
+        //public SortedList<int, string> BestScores
+        //{
+        //    get
+        //    {
+        //        return this.bestScores;
+        //    }
 
-            private set
-            {
-                this.bestScores = value;
-            }
-        }
+        //    private set
+        //    {
+        //        this.bestScores = value;
+        //    }
+        //}
 
         public List<Player> Scores
         {
@@ -43,10 +43,10 @@
         public void AddToScoreboard(int attempts)
         {
             Console.WriteLine("Please enter your name for the top scoreboard: ");
-
             string username = Console.ReadLine().Trim();
 
             WriteScoreInFile(username, attempts, ScoresFile);
+
             //if (this.BestScores.Count < 5 || this.BestScores.ElementAt(4).Key > attempts)
             //{
             //    Console.WriteLine("Please enter your name for the top scoreboard: ");

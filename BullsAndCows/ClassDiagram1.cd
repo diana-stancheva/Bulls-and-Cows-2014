@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BullsAndCows.BullsAndCows">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>BullsAndCows.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.BullsAndCowsTest">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>BullsAndCowsTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.ComandExecutor" Collapsed="true">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ComandExecutor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.Command">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAEAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.GameEngine">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAAgAAAAAEAAEIAAAAAgBAAQgAAAQAEAAAA=</HashCode>
+      <FileName>GameEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.Help" Collapsed="true">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.InterfaceMessages">
+    <Position X="4.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAYEAAAAAAAAAAAAAAAAgAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>InterfaceMessages.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.Player" Collapsed="true">
+    <Position X="10.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgEAAAIAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BullsAndCows.Scoreboard">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAAAICAAAgAAAAIAAAAAAAAAAACAAAAAAAQEAA=</HashCode>
+      <FileName>Scoreboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
