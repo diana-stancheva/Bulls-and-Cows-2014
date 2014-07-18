@@ -5,25 +5,28 @@
 
     public static class Help
     {
-        public static void Cheat(int number, string ch, Random randomNumber)
+        public static void RevealOneDigit(int originalNumber, string maskedNumber, char maskChar)
         {
             ////notCheated = false;
-            if (ch.Contains('X'))
+
+            if (maskedNumber.Contains(maskChar))
             {
-                int i;
+                string originalNumberAsString = originalNumber.ToString();
+                int numberLength = originalNumberAsString.Length;
+                char[] maskedNumberAsCharArray = maskedNumber.ToCharArray();
+                int index = RandomUtils.GenerateRandomNumber(0, numberLength);
 
                 do
                 {
-                    i = randomNumber.Next(0, 4);
+                    index = RandomUtils.GenerateRandomNumber(0, numberLength);
                 }
-                while (ch[i] != 'X');
+                while (maskedNumber[index] != maskChar); //ToFix (maybe)
 
-                char[] cha = ch.ToCharArray();
-                cha[i] = number.ToString()[i];
-                ch = new string(cha);
+                maskedNumberAsCharArray[index] = originalNumberAsString[index];
+                maskedNumber = new string(maskedNumberAsCharArray);
             }
 
-            Console.WriteLine("The number looks like {0}.", ch);
+            Console.WriteLine("The number looks like {0}.", maskedNumber);
         }
     }
 }

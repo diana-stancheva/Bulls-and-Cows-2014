@@ -6,10 +6,14 @@
 
     public class GameEngine
     {
-        private readonly Scoreboard scoreboard = new Scoreboard();
-        private readonly Random randomNumber = new Random();
+        private const int DigitsCount = 4;
+        private const char maskChar = 'X';
+        private const int MinNumber = 1000;
+        private const int MaxNumber = 10000;
 
-        public string Ch { get; set; }
+        private readonly Scoreboard scoreboard = new Scoreboard();
+
+        public string MaskedNumber { get; set; }
 
         public int Number { get; set; }
 
@@ -21,10 +25,10 @@
         {
             InterfaceMessages.PrintWelcomeMessage();
             InterfaceMessages.PrintCommandsInstructionsMessage();
-            this.Number = 1111;////randomNumber.Next(1000, 10000);
+            this.Number = RandomUtils.GenerateRandomNumber(MinNumber, MaxNumber);
             this.Attempts = 1;
             this.NotCheated = true;
-            this.Ch = "XXXX";
+            this.MaskedNumber = new string(maskChar, DigitsCount);
         }
 
         public bool ReadAction()
@@ -81,15 +85,22 @@
 
             this.StartNewGame();
         }
-
+                
         public void ProcessGuess(int guess)
-        {
+        {            
             if (guess == this.Number)
             {
                 this.ProcessWin();
             }
             else
             {
+                //to all: does this look OK:
+                NumbersComparer comparer = new NumbersComparer(this.Number, guess);
+                int bullsCount = comparer.GetNumberOfBulls();
+                int cowsCount = comparer.GetNumberOfCows();
+                //end of suggestion
+
+
                 string snum = this.Number.ToString(), sguess = guess.ToString();
                 bool[] isBull = new bool[4];
                 int bulls = 0, cows = 0;
@@ -146,7 +157,7 @@
                     this.StartNewGame();
                     return;
                 case "help":
-                    Help.Cheat(this.Number, this.Ch, this.randomNumber);
+                    Help.RevealOneDigit(this.Number, this.MaskedNumber, maskChar);
                     break;
                 case "exit":
                     Environment.Exit(0);
