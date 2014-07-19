@@ -39,7 +39,10 @@
         {
             InterfaceMessages.PrintWelcomeMessage();
             InterfaceMessages.PrintCommandsInstructionsMessage();
-            this.Number = RandomUtils.GenerateRandomNumber(MinNumber, MaxNumber);
+			//NumberGenerator prefferredGenerator = new StupidButSecureGenerator();
+ 			NumberGenerator prefferredGenerator = new UserInputGenerator();
+			//NumberGenerator prefferredGenerator = new RandomGenerator();
+            this.Number = prefferredGenerator.generateValidNumber(MinNumber, MaxNumber);
             this.Attempts = 1;
             this.HasCheated = false;
             this.MaskedNumber = new string(MaskChar, DigitsCount);
