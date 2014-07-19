@@ -3,8 +3,11 @@
     using System;
     using System.Text;
 
-    public class Player
+    public class Player : IPlayer
     {
+        private const int NameMinLength = 3;
+        private const int NameMaxLength = 40;
+
         private string name;
         private int score;
 
@@ -22,11 +25,11 @@
             }
             set
             {
-                if (value.Length < 3 || value.Length > 40)
+                if (value.Length < NameMinLength || value.Length > NameMaxLength)
                 {
-                    throw new ArgumentOutOfRangeException("The name must be between 3 and 40 symbols");
+                    throw new ArgumentOutOfRangeException(string.Format("The name must be between {0} and {1} symbols", NameMinLength, NameMaxLength));
                 }
-                
+
                 this.name = value;
             }
         }

@@ -13,11 +13,11 @@
 
         private readonly Scoreboard scoreboard = new Scoreboard();
 
-        public string MaskedNumber { get; set; }
+        public string MaskedNumber { get; private set; }
 
-        public int Number { get; set; }
+        public int Number { get; private set; }
 
-        public bool NotCheated { get; set; }
+        public bool HasCheated { get; set; }
 
         public int Attempts { get; set; }
 
@@ -27,7 +27,7 @@
             InterfaceMessages.PrintCommandsInstructionsMessage();
             this.Number = RandomUtils.GenerateRandomNumber(MinNumber, MaxNumber);
             this.Attempts = 1;
-            this.NotCheated = true;
+            this.HasCheated = false;
             this.MaskedNumber = new string(MaskChar, DigitsCount);
         }
 
@@ -78,7 +78,7 @@
         {
             InterfaceMessages.PrintCongratulationsMessage(this.Attempts);
 
-            if (this.NotCheated)
+            if (!this.HasCheated)
             {
                 this.scoreboard.AddToScoreboard(this.Attempts);
             }
@@ -100,7 +100,7 @@
                 int cowsCount = comparer.GetNumberOfCows();
                 //end of suggestion
 
-
+                //begin: to be removed
                 string snum = this.Number.ToString(), sguess = guess.ToString();
                 bool[] isBull = new bool[4];
                 int bulls = 0, cows = 0;
@@ -139,6 +139,8 @@
                         }
                     }
                 }
+                //end: to be removed
+
 
                 InterfaceMessages.PrintNotGuessedMessage(bulls, cows);
 
