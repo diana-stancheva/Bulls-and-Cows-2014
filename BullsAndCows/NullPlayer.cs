@@ -20,6 +20,10 @@ namespace BullsAndCows
             {
                 return this.name;
             }
+            set 
+            {
+                this.name = value;
+            }
         }
 
         public int Score

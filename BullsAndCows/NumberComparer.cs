@@ -22,7 +22,11 @@ namespace BullsAndCows
 
         private byte[] OriginalNumber
         {
-            get;
+            get
+            {
+                return this.originalNumber;
+            }
+
             set
             {
                 if (value.Length != NumberOfDigits)
@@ -36,7 +40,10 @@ namespace BullsAndCows
 
         private byte[] GuessedNumber
         {
-            get;
+            get
+            {
+                return this.guessedNumber;
+            }
             set
             {
                 if (value.Length != NumberOfDigits)

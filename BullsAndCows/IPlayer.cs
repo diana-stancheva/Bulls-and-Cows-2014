@@ -8,7 +8,7 @@
             set;
         }
 
-        string Score
+        int Score
         {
             get;
             set;
