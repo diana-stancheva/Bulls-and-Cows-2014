@@ -7,7 +7,7 @@
     public class GameEngine
     {
         private const int DigitsCount = 4;
-        private const char maskChar = 'X';
+        private const char MaskChar = 'X';
         private const int MinNumber = 1000;
         private const int MaxNumber = 10000;
 
@@ -28,7 +28,7 @@
             this.Number = RandomUtils.GenerateRandomNumber(MinNumber, MaxNumber);
             this.Attempts = 1;
             this.NotCheated = true;
-            this.MaskedNumber = new string(maskChar, DigitsCount);
+            this.MaskedNumber = new string(MaskChar, DigitsCount);
         }
 
         public bool ReadAction()
@@ -157,7 +157,7 @@
                     this.StartNewGame();
                     return;
                 case "help":
-                    Help.RevealOneDigit(this.Number, this.MaskedNumber, maskChar);
+                    Help.RevealOneDigit(this.Number, this.MaskedNumber, MaskChar);
                     break;
                 case "exit":
                     Environment.Exit(0);
