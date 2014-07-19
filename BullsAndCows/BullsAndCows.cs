@@ -7,12 +7,12 @@
     {
         public void Play()
         {
-            GameEngine game = new GameEngine();
+            GameEngine gameEngine = GameEngine.InstanceCreation();
 
-            game.StartNewGame();
+            gameEngine.StartNewGame();
             while (true)
             {
-                game.ReadAction();
+                gameEngine.ReadAction();
             }
         }
     }

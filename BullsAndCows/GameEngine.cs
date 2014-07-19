@@ -6,6 +6,21 @@
 
     public class GameEngine
     {
+		
+		private GameEngine() {}
+
+		public static GameEngine instance;
+
+		public static GameEngine InstanceCreation()
+		{
+		    object lockingObject = new object();
+		    if (instance == null)
+            {
+		       instance = new GameEngine();
+		    }
+		    return instance;
+		} 
+
         private const int DigitsCount = 4;
         private const char MaskChar = 'X';
         private const int MinNumber = 1000;
