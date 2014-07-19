@@ -51,7 +51,20 @@ namespace BullsAndCows
         public int GetNumberOfCows()
         {
             int cows = 0;
-            //TOFIX
+
+            for (int i = 0; i < NumberOfDigits; i++)
+            {
+                //check all digits EXCEPT the current (which, if equal, would make a bull)
+                for (int j = 0; (j < NumberOfDigits && j != i); j++)
+                {
+                    if ((this.OriginalNumber[i] == this.GuessedNumber[j]))
+                    {
+                        cows++;
+                        break;
+                    }
+                }
+            }
+
             return cows;
         }
 
