@@ -13,7 +13,6 @@
 
 		public static GameEngine InstanceCreation()
 		{
-		    object lockingObject = new object();
 		    if (instance == null)
             {
 		       instance = new GameEngine();
