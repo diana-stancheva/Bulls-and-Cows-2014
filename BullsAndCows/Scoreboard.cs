@@ -12,7 +12,7 @@
         private const string ScoresFile = "../../scores.txt";
         private const char Delimiter = '!';
         //private SortedList<int, string> bestScores = new SortedList<int, string>();
-        private List<Player> scores = new List<Player>();
+        private List<IPlayer> scores = new List<IPlayer>();
 
         //public SortedList<int, string> BestScores
         //{
@@ -27,7 +27,7 @@
         //    }
         //}
 
-        public List<Player> Scores
+        public List<IPlayer> Scores
         {
             get
             {
@@ -63,7 +63,7 @@
         public void ShowScoreboard()
         {
 
-            List<Player> scores = new List<Player>();
+            List<IPlayer> scores = new List<IPlayer>();
             scores = ReadScoresFromFile(ScoresFile);
             scores = scores.OrderBy(o => o.Score).ThenBy(o => o.Name).ToList();
             string separator = new String('-', Console.WindowWidth - 1);
@@ -100,9 +100,12 @@
             }
         }
 
-        private List<Player> ReadScoresFromFile(string file)
+        private List<IPlayer> ReadScoresFromFile(string file)
         {
-            List<Player> listOfScores = new List<Player>();
+            string currentPlayerName;
+            int currentPlayerScore;
+
+            List<IPlayer> listOfScores = new List<IPlayer>();
             StreamReader scores = new StreamReader(file, Encoding.GetEncoding("windows-1251"));
 
             using (scores)
@@ -111,8 +114,11 @@
                 while ((currentLine = scores.ReadLine()) != null)
                 {
                     string[] separatedLine = currentLine.Split(Delimiter);
-
-                    listOfScores.Add(new Player(separatedLine[0], int.Parse(separatedLine[1])));
+                    currentPlayerName = separatedLine[0];
+                    currentPlayerScore = int.Parse(separatedLine[1]);
+                    IPlayer currentPlayer = new Player(currentPlayerName);
+                    currentPlayer.Score = currentPlayerScore;
+                    listOfScores.Add(currentPlayer);
                 }
             }
 

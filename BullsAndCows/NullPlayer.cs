@@ -7,11 +7,12 @@ namespace BullsAndCows
 {
     public class NullPlayer : IPlayer
     {
-        private string name = "Unknown Player";
+        private string name;
         private int score;
 
         public NullPlayer()
         {
+            this.Name = "Unknown Player";
         }
 
         public string Name
@@ -37,5 +38,9 @@ namespace BullsAndCows
                 this.score = value;
             }
         }
+
+        public bool HasCheated { get; set; }
+
+        public int Attempts { get; set; }
     }
 }

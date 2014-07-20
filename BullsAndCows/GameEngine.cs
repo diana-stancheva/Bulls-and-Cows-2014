@@ -5,17 +5,16 @@
     using System.Text.RegularExpressions;
 
     public class GameEngine
-    {
-		
-		private GameEngine() {}
+    {		
+		private GameEngine(IPlayer player) {}
 
 		public static GameEngine instance;
 
-		public static GameEngine InstanceCreation()
+		public static GameEngine InstanceCreation(IPlayer player)
 		{
 		    if (instance == null)
             {
-		       instance = new GameEngine();
+		       instance = new GameEngine(player);
 		    }
 		    return instance;
 		} 
@@ -31,9 +30,7 @@
 
         public int Number { get; private set; }
 
-        public bool HasCheated { get; set; }
-
-        public int Attempts { get; set; }
+        public IPlayer CurrentPlayer { get; set; }
 
         public void StartNewGame()
         {
@@ -43,8 +40,8 @@
  			NumberGenerator prefferredGenerator = new UserInputGenerator();
 			//NumberGenerator prefferredGenerator = new RandomGenerator();
             this.Number = prefferredGenerator.generateValidNumber(MinNumber, MaxNumber);
-            this.Attempts = 1;
-            this.HasCheated = false;
+            this.CurrentPlayer.Attempts = 1;
+            this.CurrentPlayer.HasCheated = false;
             this.MaskedNumber = new string(MaskChar, DigitsCount);
         }
 
@@ -93,11 +90,11 @@
 
         public void ProcessWin()
         {
-            InterfaceMessages.PrintCongratulationsMessage(this.Attempts);
+            InterfaceMessages.PrintCongratulationsMessage(this.CurrentPlayer.Attempts);
 
-            if (!this.HasCheated)
+            if (!this.CurrentPlayer.HasCheated)
             {
-                this.scoreboard.AddToScoreboard(this.Attempts);
+                this.scoreboard.AddToScoreboard(this.CurrentPlayer.Attempts);
             }
 
             this.StartNewGame();
@@ -161,7 +158,7 @@
 
                 InterfaceMessages.PrintNotGuessedMessage(bulls, cows);
 
-                this.Attempts++;
+                this.CurrentPlayer.Attempts++;
             }
         }
         #region

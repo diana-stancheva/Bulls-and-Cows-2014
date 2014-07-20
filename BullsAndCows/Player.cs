@@ -5,16 +5,18 @@
 
     public class Player : IPlayer
     {
-        private const int NameMinLength = 3;
-        private const int NameMaxLength = 40;
-
+        private const int InitialScore = 0;
+        private const int InitialAttempts = 0;
+                
         private string name;
         private int score;
 
-        public Player(string name, int score)
+        public Player(string name)
         {
             this.Name = name;
-            this.Score = score;
+            this.Score = InitialScore;
+            this.Attempts = InitialAttempts;
+            this.HasCheated = false;
         }
 
         public string Name
@@ -24,12 +26,7 @@
                 return this.name;
             }
             set
-            {
-                if (value.Length < NameMinLength || value.Length > NameMaxLength)
-                {
-                    throw new ArgumentOutOfRangeException(string.Format("The name must be between {0} and {1} symbols", NameMinLength, NameMaxLength));
-                }
-
+            {                
                 this.name = value;
             }
         }
@@ -45,6 +42,10 @@
                 this.score = value;
             }
         }
+
+        public bool HasCheated { get; set; }
+
+        public int Attempts { get; set; }
 
         public override string ToString()
         {
