@@ -6,15 +6,15 @@
 
     public class GameEngine
     {		
-		private GameEngine(IPlayer player) {}
+		private GameEngine() {}
 
 		public static GameEngine instance;
 
-		public static GameEngine InstanceCreation(IPlayer player)
+		public static GameEngine InstanceCreation()
 		{
 		    if (instance == null)
             {
-		       instance = new GameEngine(player);
+		       instance = new GameEngine();
 		    }
 		    return instance;
 		} 
@@ -32,7 +32,7 @@
 
         public IPlayer CurrentPlayer { get; set; }
 
-        public void StartNewGame()
+        public void StartNewGame(IPlayer player)
         {
             InterfaceMessages.PrintWelcomeMessage();
             InterfaceMessages.PrintCommandsInstructionsMessage();
@@ -40,6 +40,7 @@
  			NumberGenerator prefferredGenerator = new UserInputGenerator();
 			//NumberGenerator prefferredGenerator = new RandomGenerator();
             this.Number = prefferredGenerator.generateValidNumber(MinNumber, MaxNumber);
+			this.CurrentPlayer = player;
             this.CurrentPlayer.Attempts = 1;
             this.CurrentPlayer.HasCheated = false;
             this.MaskedNumber = new string(MaskChar, DigitsCount);
@@ -97,7 +98,7 @@
                 this.scoreboard.AddToScoreboard(this.CurrentPlayer.Attempts);
             }
 
-            this.StartNewGame();
+            this.StartNewGame(new Player("чичу Митку"));
         }
                 
         public void ProcessGuess(int guess)
@@ -170,7 +171,7 @@
                     this.scoreboard.ShowScoreboard();
                     break;
                 case "restart":
-                    this.StartNewGame();
+                    this.StartNewGame(new Player("чичу Митку"));
                     return;
                 case "help":
                     Help.RevealOneDigit(this.Number, this.MaskedNumber, MaskChar);

@@ -10,30 +10,27 @@
         
         public void Play()
         {
-            Console.WriteLine("Please enter your name:");
-            string playerName = Console.ReadLine();
 
-            IPlayer player = CreatePlayer(playerName);
 
-            GameEngine gameEngine = GameEngine.InstanceCreation(player);
+            GameEngine gameEngine = GameEngine.InstanceCreation();
 
-            gameEngine.StartNewGame();
+            gameEngine.StartNewGame(new Player("чичу Митку"));
             while (true)
             {
                 gameEngine.ReadAction();
             }
         }
 
-        private IPlayer CreatePlayer(string name)
-        {
-            if (name.Length > NameMinLength || name.Length < NameMaxLength)
-            {
-                return new Player(name);
-            }
-            else
-            {
-                return new NullPlayer();
-            }
-        }
+//        private IPlayer CreatePlayer(string name)
+//        {
+//            if (name.Length > NameMinLength || name.Length < NameMaxLength)
+//            {
+//                return new Player(name);
+//            }
+//            else
+//            {
+//                return new NullPlayer();
+//            }
+//        }
     }
 }
