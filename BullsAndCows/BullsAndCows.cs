@@ -5,8 +5,8 @@
 
     public class BullsAndCows
     {
-        private const int NameMinLength = 3;
-        private const int NameMaxLength = 40;
+        //private const int NameMinLength = 3;
+        //private const int NameMaxLength = 40;
         
         public void Play()
         {

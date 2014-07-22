@@ -4,9 +4,9 @@
 
 	public abstract class NumberGenerator
 	{
-		protected abstract int generateNumber(int minNumber, int maxNumber);
+		protected abstract int GenerateNumber(int minNumber, int maxNumber);
 		
-		public bool isNumberValid (int number)
+		public bool IsNumberValid (int number)
 		{
 			string numberAsString = number.ToString();
 			bool[] usedDigits = new bool[10];
@@ -31,10 +31,10 @@
 			return true;
 		}
 
-		public int generateValidNumber (int minNumber, int maxNumber)
+		public int GenerateValidNumber (int minNumber, int maxNumber)
 		{
-			int result = this.generateNumber (minNumber, maxNumber);
-			if (!this.isNumberValid (result))
+			int result = this.GenerateNumber (minNumber, maxNumber);
+			if (!this.IsNumberValid (result))
 			{
 				throw new ArgumentException("The number is not valid");
 			}
@@ -47,14 +47,14 @@
     {
         private static Random randomNumberGenerator = new Random();
 
-        protected override int generateNumber(int minNumber, int maxNumber)
+        protected override int GenerateNumber(int minNumber, int maxNumber)
         {	
 			int result;
 			do
 			{
             	result = randomNumberGenerator.Next(minNumber, maxNumber);
 			}
-			while (!base.isNumberValid(result));
+			while (!base.IsNumberValid(result));
             return result;
         }
     }
@@ -62,7 +62,7 @@
     public class StupidButSecureGenerator: NumberGenerator
     {
 
-        protected override int generateNumber(int minNumber, int maxNumber)
+        protected override int GenerateNumber(int minNumber, int maxNumber)
         {
             const int FIXED_NUMBER = 1234;
             return FIXED_NUMBER;
@@ -72,7 +72,7 @@
     public class UserInputGenerator: NumberGenerator
     {
 
-        protected override int generateNumber(int minNumber, int maxNumber)
+        protected override int GenerateNumber(int minNumber, int maxNumber)
         {
 			int number;
 			Console.Write("Type in the number: ");

@@ -1,9 +1,15 @@
-﻿namespace BullsAndCows
+﻿// <copyright file="GameEngine.cs" company="Telerik Academy">
+// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// </copyright>
+namespace BullsAndCows
 {
     using System;
     using System.Linq;
     using System.Text.RegularExpressions;
 
+    /// <summary>
+    /// Contains all engine methods of the game
+    /// </summary>
     public class GameEngine
     {		
 		private GameEngine() {}
@@ -39,7 +45,7 @@
 			//NumberGenerator prefferredGenerator = new StupidButSecureGenerator();
  			NumberGenerator prefferredGenerator = new UserInputGenerator();
 			//NumberGenerator prefferredGenerator = new RandomGenerator();
-            this.Number = prefferredGenerator.generateValidNumber(MinNumber, MaxNumber);
+            this.Number = prefferredGenerator.GenerateValidNumber(MinNumber, MaxNumber);
 			this.CurrentPlayer = player;
             this.CurrentPlayer.Attempts = 1;
             this.CurrentPlayer.HasCheated = false;
@@ -54,38 +60,7 @@
 
             Command currentCommand = Command.Parse(line);
             CommandExecution(currentCommand);
-            //Regex patt = new Regex("[1-9][0-9][0-9][0-9]");
-
-            //switch (line)
-            //{
-            //    case "top":
-            //        this.scoreboard.ShowScoreboard();
-            //        break;
-            //    case "restart":
-            //        this.StartNewGame();
-            //        break;
-            //    case "help":
-            //        Help.Cheat(this.Number, this.Ch, this.randomNumber);
-            //        break;
-            //    case "exit":
-            //        ////return false;
-            //        Environment.Exit(0);
-            //        break;
-            //    default:
-
-            //        if (patt.IsMatch(line))
-            //        {
-            //            int guess = int.Parse(line);
-            //            this.ProcessGuess(guess);
-            //        }
-            //        else
-            //        {
-            //            InterfaceMessages.PrintInvalidCommandMessage();
-            //        }
-
-            //        break;
-            //}
-
+            
             return true;
         }
 
@@ -110,9 +85,9 @@
             else
             {
                 //to all: does this look OK:
-                NumbersComparer comparer = new NumbersComparer(this.Number, guess);
-                int bullsCount = comparer.GetNumberOfBulls();
-                int cowsCount = comparer.GetNumberOfCows();
+                //NumbersComparer comparer = new NumbersComparer(this.Number, guess);
+                //int bullsCount = comparer.GetNumberOfBulls();
+                //int cowsCount = comparer.GetNumberOfCows();
                 //end of suggestion
 
                 //begin: to be removed

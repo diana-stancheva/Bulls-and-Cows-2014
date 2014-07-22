@@ -51,7 +51,7 @@
     <Compile Include="BullsAndCowsTest.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="NullPlayer.cs" />
-    <Compile Include="NumberComparer.cs" />
+    <Compile Include="NumbersComparer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="ComandExecutor.cs" />
     <Compile Include="Command.cs" />
@@ -61,7 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtils.cs" />
     <Compile Include="Scoreboard.cs" />
-    <Compile Include="NumberGenerators.cs" />
+    <Compile Include="NumberGenerator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />

@@ -1,14 +1,24 @@
-﻿namespace BullsAndCows
+﻿// <copyright file="Help.cs" company="Telerik Academy">
+// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// </copyright>
+namespace BullsAndCows
 {
     using System;
     using System.Linq;
 
+    /// <summary>
+    /// Contains help methods
+    /// </summary>
     public static class Help
     {
+        /// <summary>
+        /// Shows one digit from the secret number
+        /// </summary>
+        /// <param name="originalNumber">secret number</param>
+        /// <param name="maskedNumber">number in masked string format</param>
+        /// <param name="maskChar">Mask char</param>
         public static void RevealOneDigit(int originalNumber, string maskedNumber, char maskChar)
         {
-            ////notCheated = false;
-
             if (maskedNumber.Contains(maskChar))
             {
                 string originalNumberAsString = originalNumber.ToString();
