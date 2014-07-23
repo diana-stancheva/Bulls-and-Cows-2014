@@ -45,7 +45,7 @@
 
     public class RandomGenerator: NumberGenerator
     {
-        private static Random randomNumberGenerator = new Random();
+        private static readonly Random randomNumberGenerator = new Random();
 
         protected override int GenerateNumber(int minNumber, int maxNumber)
         {	
@@ -64,8 +64,8 @@
 
         protected override int GenerateNumber(int minNumber, int maxNumber)
         {
-            const int FIXED_NUMBER = 1234;
-            return FIXED_NUMBER;
+            const int FixedNumber = 1234;
+            return FixedNumber;
         }
     }
 	
@@ -90,5 +90,4 @@
             return number;
         }
     }
-
 }

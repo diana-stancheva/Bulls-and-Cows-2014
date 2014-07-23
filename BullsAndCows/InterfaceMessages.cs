@@ -12,7 +12,7 @@
 
         public static void PrintCommandsInstructionsMessage()
         {
-            string separator = new String('-', Console.WindowWidth-1);
+            string separator = new string('-', Console.WindowWidth-1);
 
             Console.WriteLine("\nCommands:");
             Console.WriteLine(separator);
