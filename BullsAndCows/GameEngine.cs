@@ -81,7 +81,11 @@ namespace BullsAndCows
             this.MaskedNumber = new string(MaskChar, DigitsCount);
         }
 
-        public bool ReadAction()
+        /// <summary>
+        /// Reads command from user input
+        /// </summary>
+        /// <returns></returns>
+        public void ReadAction()
         {
             InterfaceMessages.PrintPromptMessage();
 
@@ -89,8 +93,6 @@ namespace BullsAndCows
 
             Command currentCommand = Command.Parse(line);
             this.CommandExecution(currentCommand);
-            
-            return true;
         }
 
         public void ProcessWin()
