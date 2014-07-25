@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram.cd" />
     <None Include="StyleCop.Cache" />
   </ItemGroup>
   <ItemGroup>
@@ -56,13 +56,17 @@
     <Compile Include="Player.cs" />
     <Compile Include="ComandExecutor.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="GameEngine.cs" />
+    <Compile Include="GameEngine.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Help.cs" />
     <Compile Include="InterfaceMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomGenerator.cs" />
     <Compile Include="RandomUtils.cs" />
     <Compile Include="Scoreboard.cs" />
     <Compile Include="NumberGenerator.cs" />
+    <Compile Include="UserInputGenerator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />

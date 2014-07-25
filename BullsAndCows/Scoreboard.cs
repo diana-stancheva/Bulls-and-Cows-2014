@@ -39,11 +39,8 @@ namespace BullsAndCows
         /// Adds a result to the scoreboard file
         /// </summary>
         /// <param name="attempts">Guess attempts</param>
-        public void AddToScoreboard(int attempts)
+        public void AddToScoreboard(int attempts, string username)
         {
-            Console.WriteLine("Please enter your name for the top scoreboard: ");
-            string username = Console.ReadLine().Trim();
-
             WriteScoreInFile(username, attempts, ScoresFile);
         }
 

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BullsAndCows
+﻿namespace BullsAndCows
 {
+    using System;
+    using System.Linq;
+
     public class NumbersComparer
     {
         private const int NumberOfDigits = 4;
-        private const int MinNumber = 1000;
-        private const int MaxNumber = 9999;
+        //private const int MinNumber = 1000;
+        //private const int MaxNumber = 9999;
         private byte[] originalNumber;
         private byte[] guessedNumber;
 

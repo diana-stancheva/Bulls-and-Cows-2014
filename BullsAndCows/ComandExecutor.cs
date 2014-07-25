@@ -7,7 +7,7 @@
     {
         public static void Execute(Command command)
         {
-            switch (command.Name)
+            switch (command.CommandName)
             {
                 case "top":
                     //this.scoreboard.ShowScoreboard();
@@ -30,7 +30,7 @@
                 default:
                     if (IsValidGuessNumber(command))
                     {
-                        int guess = int.Parse(command.Name);
+                        int guess = int.Parse(command.CommandName);
 
                         //this.ProcessGuess(guess);
                     }
@@ -46,7 +46,7 @@
         {
             Regex guessNumberPattern = new Regex("^(\\d{4})$");
 
-            if (guessNumberPattern.IsMatch(command.Name))
+            if (guessNumberPattern.IsMatch(command.CommandName))
             {
                 return true;
             }

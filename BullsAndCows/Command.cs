@@ -5,18 +5,18 @@
 
     public class Command
     {
-        private string name;
+        private string commandName;
 
         private Command(string input)
         {
             this.TranslateInput(input);
         }
 
-        public string Name
+        public string CommandName
         {
             get
             {
-                return this.name;
+                return this.commandName;
             }
 
             private set
@@ -26,7 +26,7 @@
                     throw new ArgumentNullException("Name cannot be null or empty.");
                 }
 
-                this.name = value;
+                this.commandName = value;
             }
         }
 
@@ -37,7 +37,7 @@
 
         private void TranslateInput(string input)
         {
-            this.Name = input.ToLower();
+            this.CommandName = input.ToLower();
         }
     }
 }

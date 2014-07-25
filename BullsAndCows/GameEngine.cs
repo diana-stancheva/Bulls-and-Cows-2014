@@ -1,6 +1,7 @@
 ﻿// <copyright file="GameEngine.cs" company="Telerik Academy">
 // Copyright (c) 2013 Telerik Academy. All rights reserved.
 // </copyright>
+
 namespace BullsAndCows
 {
     using System;
@@ -10,43 +11,71 @@ namespace BullsAndCows
     /// <summary>
     /// Contains all engine methods of the game
     /// </summary>
-    public class GameEngine
-    {		
-		private GameEngine() {}
-
-		public static GameEngine instance;
-
-		public static GameEngine InstanceCreation()
-		{
-		    if (instance == null)
-            {
-		       instance = new GameEngine();
-		    }
-		    return instance;
-		} 
-
+    public sealed class GameEngine
+    {
         private const int DigitsCount = 4;
         private const char MaskChar = 'X';
         private const int MinNumber = 1000;
         private const int MaxNumber = 10000;
 
+        /// <summary>
+        /// Default instance of the <see cref="GameEngine"/> class
+        /// </summary>
+        private static readonly GameEngine instance = new GameEngine();
+
         private readonly Scoreboard scoreboard = new Scoreboard();
 
+        /// <summary>
+        /// Prevents a default instance of the <see cref="GameEngine"/> class from being created
+        /// </summary>
+        private GameEngine()
+        {
+        }
+
+        /// <summary>
+        /// Gets default instance of the <see cref="GameEngine"/> class
+        /// </summary>
+        public static GameEngine Instance
+        {
+            get 
+            {
+                return instance;
+            }
+        }
+
+        /// <summary>
+        /// Gets masked number
+        /// </summary>
         public string MaskedNumber { get; private set; }
 
+        /// <summary>
+        /// Gets generated number
+        /// </summary>
         public int Number { get; private set; }
 
+        public string Username { get; private set; }
+
+        /// <summary>
+        /// Gets or sets current player
+        /// </summary>
         public IPlayer CurrentPlayer { get; set; }
 
+        /// <summary>
+        /// Starts new game
+        /// </summary>
+        /// <param name="player">player name</param>
         public void StartNewGame(IPlayer player)
         {
+            Console.WriteLine("\nPlease enter your name for the new game: ");
+            this.Username = Console.ReadLine().Trim();
+
             InterfaceMessages.PrintWelcomeMessage();
             InterfaceMessages.PrintCommandsInstructionsMessage();
-			//NumberGenerator prefferredGenerator = new StupidButSecureGenerator();
- 			NumberGenerator prefferredGenerator = new UserInputGenerator();
-			//NumberGenerator prefferredGenerator = new RandomGenerator();
+            ////NumberGenerator prefferredGenerator = new StupidButSecureGenerator();
+            NumberGenerator prefferredGenerator = new UserInputGenerator();
+            ////NumberGenerator prefferredGenerator = new RandomGenerator();
             this.Number = prefferredGenerator.GenerateValidNumber(MinNumber, MaxNumber);
-			this.CurrentPlayer = player;
+            this.CurrentPlayer = player;
             this.CurrentPlayer.Attempts = 1;
             this.CurrentPlayer.HasCheated = false;
             this.MaskedNumber = new string(MaskChar, DigitsCount);
@@ -59,7 +88,7 @@ namespace BullsAndCows
             string line = Console.ReadLine().Trim();
 
             Command currentCommand = Command.Parse(line);
-            CommandExecution(currentCommand);
+            this.CommandExecution(currentCommand);
             
             return true;
         }
@@ -70,34 +99,35 @@ namespace BullsAndCows
 
             if (!this.CurrentPlayer.HasCheated)
             {
-                this.scoreboard.AddToScoreboard(this.CurrentPlayer.Attempts);
+                this.scoreboard.AddToScoreboard(this.CurrentPlayer.Attempts, this.Username);
             }
 
-            this.StartNewGame(new Player("чичу Митку"));
+            this.StartNewGame(new Player(this.Username));
         }
-                
-        public void ProcessGuess(int guess)
-        {            
-            if (guess == this.Number)
+        
+        public void ProcessGuess(int number)
+        { 
+            if (number == this.Number)
             {
                 this.ProcessWin();
             }
             else
             {
-                //to all: does this look OK:
-                //NumbersComparer comparer = new NumbersComparer(this.Number, guess);
-                //int bullsCount = comparer.GetNumberOfBulls();
-                //int cowsCount = comparer.GetNumberOfCows();
-                //end of suggestion
-
-                //begin: to be removed
-                string snum = this.Number.ToString(), sguess = guess.ToString();
+                ////to all: does this look OK:
+                ////NumbersComparer comparer = new NumbersComparer(this.Number, guess);
+                ////int bullsCount = comparer.GetNumberOfBulls();
+                ////int cowsCount = comparer.GetNumberOfCows();
+                ////end of suggestion
+                ////begin: to be removed
+                string stringHiddenNumber = this.Number.ToString();
+                string stringGuessNumber = number.ToString();
                 bool[] isBull = new bool[4];
-                int bulls = 0, cows = 0;
+                int bulls = 0;
+                int cows = 0;
 
                 for (int i = 0; i < 4; i++)
                 {
-                    if (isBull[i] = snum[i] == sguess[i])
+                    if (isBull[i] = stringHiddenNumber[i] == stringGuessNumber[i])
                     {
                         bulls++;
                     }
@@ -114,7 +144,7 @@ namespace BullsAndCows
                 {
                     if (!isBull[i])
                     {
-                        digs[snum[i] - '0']++;
+                        digs[stringHiddenNumber[i] - '0']++;
                     }
                 }
 
@@ -122,31 +152,36 @@ namespace BullsAndCows
                 {
                     if (!isBull[i])
                     {
-                        if (digs[sguess[i] - '0'] > 0)
+                        if (digs[stringGuessNumber[i] - '0'] > 0)
                         {
                             cows++;
-                            digs[sguess[i] - '0']--;
+                            digs[stringGuessNumber[i] - '0']--;
                         }
                     }
                 }
-                //end: to be removed
-
+                ////end: to be removed
 
                 InterfaceMessages.PrintNotGuessedMessage(bulls, cows);
 
                 this.CurrentPlayer.Attempts++;
             }
         }
+
         #region
+        
+        /// <summary>
+        /// Executes the user command
+        /// </summary>
+        /// <param name="command">command name</param>
         private void CommandExecution(Command command)
         {
-            switch (command.Name)
+            switch (command.CommandName)
             {
                 case "top":
                     this.scoreboard.ShowScoreboard();
                     break;
                 case "restart":
-                    this.StartNewGame(new Player("чичу Митку"));
+                    this.StartNewGame(new Player(this.Username));
                     return;
                 case "help":
                     Help.RevealOneDigit(this.Number, this.MaskedNumber, MaskChar);
@@ -161,30 +196,37 @@ namespace BullsAndCows
                     Console.WriteLine("You have entered invalid number!");
                     break;
                 default:
-                    if (IsValidGuessNumber(command))
+                    if (this.IsValidGuessNumber(command))
                     {
-                        int guess = int.Parse(command.Name);
-
+                        int guess = int.Parse(command.CommandName);
+                        
                         this.ProcessGuess(guess);
                     }
                     else
                     {
                         InterfaceMessages.PrintInvalidCommandMessage();
                     }
+                    
                     break;
             }
         }
+        
         #endregion
-
+        
+        /// <summary>
+        /// Checks if user input is number or other command not
+        /// </summary>
+        /// <param name="command">command name</param>
+        /// <returns>true or false</returns>
         private bool IsValidGuessNumber(Command command)
         {
             Regex guessNumberPattern = new Regex("^(\\d{4})$");
-
-            if (guessNumberPattern.IsMatch(command.Name))
+            
+            if (guessNumberPattern.IsMatch(command.CommandName))
             {
                 return true;
             }
-
+            
             return false;
         }
     }

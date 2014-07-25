@@ -17,6 +17,14 @@ namespace BullsAndCows
         private string name;
         private int score;
 
+        public Player()
+        {
+            this.Name = name;
+            this.Score = InitialScore;
+            this.Attempts = InitialAttempts;
+            this.HasCheated = false;
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Player"/> class
         /// </summary>
@@ -28,6 +36,8 @@ namespace BullsAndCows
             this.Attempts = InitialAttempts;
             this.HasCheated = false;
         }
+
+
 
         /// <summary>
         /// Gets or sets name of the player
@@ -78,7 +88,7 @@ namespace BullsAndCows
         public override string ToString()
         {
             StringBuilder player = new StringBuilder();
-            player.AppendFormat("{0,-10} --> {1, 5}", this.Name, this.Score);
+            player.AppendFormat("{0,-10} --> {1, 5}", this.Name, this.Attempts);
 
             return player.ToString();
         }

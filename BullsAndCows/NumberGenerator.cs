@@ -42,52 +42,12 @@
 		}
 
 	}
-
-    public class RandomGenerator: NumberGenerator
-    {
-        private static readonly Random randomNumberGenerator = new Random();
-
-        protected override int GenerateNumber(int minNumber, int maxNumber)
-        {	
-			int result;
-			do
-			{
-            	result = randomNumberGenerator.Next(minNumber, maxNumber);
-			}
-			while (!base.IsNumberValid(result));
-            return result;
-        }
-    }
-
-    public class StupidButSecureGenerator: NumberGenerator
-    {
-
-        protected override int GenerateNumber(int minNumber, int maxNumber)
-        {
-            const int FixedNumber = 1234;
-            return FixedNumber;
-        }
-    }
-	
-    public class UserInputGenerator: NumberGenerator
-    {
-
-        protected override int GenerateNumber(int minNumber, int maxNumber)
-        {
-			int number;
-			Console.Write("Type in the number: ");
-			number = int.Parse(Console.ReadLine());
-
-//			do
-//			{
-//				Console.Write("Type in the number: ");
-//				number = int.Parse(Console.ReadLine());
-//				if (!base.isNumberValid(number))
-//				{	
-//					Console.WriteLine ("The number is not valid!");
-//				}
-//			} while (!base.isNumberValid(number));
-            return number;
-        }
-    }
+    //public class StupidButSecureGenerator: NumberGenerator
+    //{
+    //    protected override int GenerateNumber(int minNumber, int maxNumber)
+    //    {
+    //        const int FixedNumber = 1234;
+    //        return FixedNumber;
+    //    }
+    //}
 }
