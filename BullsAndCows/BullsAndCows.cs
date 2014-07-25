@@ -9,7 +9,8 @@
         {
             GameEngine gameEngine = GameEngine.Instance;
 
-            gameEngine.StartNewGame(new Player());
+            gameEngine.StartNewGame(new Player("player Name"));
+            //gameEngine.StartNewGame();
 
             while (true)
             {

@@ -50,7 +50,16 @@ namespace BullsAndCows
             }
 
             set
-            {                
+            {
+                if (value.Length < 3 || value.Length > 30)
+                {
+                    throw new ArgumentOutOfRangeException("Username can be between 3 and 30 symbols");
+                }
+
+                if (value == null || value == string.Empty)
+                {
+                    throw new ArgumentNullException("Username can not be null or emty");
+                }
                 this.name = value;
             }
         }
@@ -88,7 +97,7 @@ namespace BullsAndCows
         public override string ToString()
         {
             StringBuilder player = new StringBuilder();
-            player.AppendFormat("{0,-10} --> {1, 5}", this.Name, this.Attempts);
+            player.AppendFormat("{0,-10} --> {1, 5}", this.Name, this.Score);
 
             return player.ToString();
         }

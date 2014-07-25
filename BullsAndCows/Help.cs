@@ -17,7 +17,8 @@ namespace BullsAndCows
         /// <param name="originalNumber">secret number</param>
         /// <param name="maskedNumber">number in masked string format</param>
         /// <param name="maskChar">Mask char</param>
-        public static void RevealOneDigit(int originalNumber, string maskedNumber, char maskChar)
+        /// <returns>masked number with one visible digit</returns>
+        public static string RevealOneDigit(int originalNumber, string maskedNumber, char maskChar)
         {
             if (maskedNumber.Contains(maskChar))
             {
@@ -37,6 +38,7 @@ namespace BullsAndCows
             }
 
             Console.WriteLine("The number looks like {0}.", maskedNumber);
+            return maskedNumber;
         }
     }
 }
