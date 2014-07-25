@@ -1,11 +1,10 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BullsAndCows;
-
-namespace BullsAndCowsTests
+﻿namespace BullsAndCowsTests
 {
+    using System;
+    using System.Text;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using BullsAndCows;
+
     /// <summary>
     /// Summary description for PlayerTest
     /// </summary>
@@ -60,6 +59,22 @@ namespace BullsAndCowsTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestNewPlayerConstructorShortName()
+        {
+            string name = "di";
+            Player player = new Player(name);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestNewPlayerConstructorLongName()
+        {
+            string name = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut";
+            Player player = new Player(name);
+        }
+
+        [TestMethod]
         public void TestNewplayerConstructorAttempts()
         {
             string name = "Ivan Ivanov";
@@ -85,7 +100,7 @@ namespace BullsAndCowsTests
             string name = "Ivan Ivanov";
             int attempts = 20;
             Player player = new Player(name);
-            player.Attempts = attempts;
+            player.Score = attempts;
             string actual = player.ToString();
 
             StringBuilder expected = new StringBuilder();

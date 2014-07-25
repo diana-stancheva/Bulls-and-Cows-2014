@@ -51,15 +51,16 @@ namespace BullsAndCows
 
             set
             {
+                if (value == null || value == string.Empty)
+                {
+                    throw new ArgumentNullException("Username can not be null or emty");
+                }
+
                 if (value.Length < 3 || value.Length > 30)
                 {
                     throw new ArgumentOutOfRangeException("Username can be between 3 and 30 symbols");
                 }
 
-                if (value == null || value == string.Empty)
-                {
-                    throw new ArgumentNullException("Username can not be null or emty");
-                }
                 this.name = value;
             }
         }
