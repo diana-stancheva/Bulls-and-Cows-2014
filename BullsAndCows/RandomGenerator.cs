@@ -14,6 +14,7 @@ namespace BullsAndCows
                 result = randomNumberGenerator.Next(minNumber, maxNumber);
             }
             while (!base.IsNumberValid(result));
+
             return result;
         }
     }

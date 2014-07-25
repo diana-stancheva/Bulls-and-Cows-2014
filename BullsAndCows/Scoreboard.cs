@@ -56,6 +56,7 @@ namespace BullsAndCows
 
             Console.WriteLine("\nScoreboard:");
             Console.WriteLine(separator);
+
             for (int i = 1; i <= BestScoresCount; i++)
             {
                 Console.WriteLine("{0}. {1}", i, scores[i].ToString());

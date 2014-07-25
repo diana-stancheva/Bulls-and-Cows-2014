@@ -18,6 +18,8 @@ namespace BullsAndCows
         {
             BullsAndCows game = new BullsAndCows();
             game.Play();
+
+            //BullsAndCows.Play();
         }
     }
 }

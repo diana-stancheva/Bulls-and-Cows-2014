@@ -107,63 +107,23 @@ namespace BullsAndCows
             this.StartNewGame(new Player(this.Username));
         }
         
-        public void ProcessGuess(int number)
+        /// <summary>
+        /// Checks if the guess number is equal to hidden number
+        /// </summary>
+        /// <param name="guessNumber">user input number</param>
+        public void ProcessGuess(int guessNumber)
         { 
-            if (number == this.Number)
+            if (guessNumber == this.Number)
             {
                 this.ProcessWin();
             }
             else
             {
-                ////to all: does this look OK:
-                ////NumbersComparer comparer = new NumbersComparer(this.Number, guess);
-                ////int bullsCount = comparer.GetNumberOfBulls();
-                ////int cowsCount = comparer.GetNumberOfCows();
-                ////end of suggestion
-                ////begin: to be removed
-                string stringHiddenNumber = this.Number.ToString();
-                string stringGuessNumber = number.ToString();
-                bool[] isBull = new bool[4];
-                int bulls = 0;
-                int cows = 0;
+                NumbersComparer comparer = new NumbersComparer(this.Number, guessNumber);
+                int bullsCount = comparer.GetNumberOfBulls();
+                int cowsCount = comparer.GetNumberOfCows();
 
-                for (int i = 0; i < 4; i++)
-                {
-                    if (isBull[i] = stringHiddenNumber[i] == stringGuessNumber[i])
-                    {
-                        bulls++;
-                    }
-                }
-
-                int[] digs = new int[10];
-
-                for (int d = 0; d < 10; d++)
-                {
-                    digs[d] = 0;
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    if (!isBull[i])
-                    {
-                        digs[stringHiddenNumber[i] - '0']++;
-                    }
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    if (!isBull[i])
-                    {
-                        if (digs[stringGuessNumber[i] - '0'] > 0)
-                        {
-                            cows++;
-                            digs[stringGuessNumber[i] - '0']--;
-                        }
-                    }
-                }
-                ////end: to be removed
-
-                InterfaceMessages.PrintNotGuessedMessage(bulls, cows);
+                InterfaceMessages.PrintNotGuessedMessage(bullsCount, cowsCount);
 
                 this.CurrentPlayer.Attempts++;
             }

@@ -1,4 +1,4 @@
-﻿// <copyright file="Player.cs" company="Telerik Academy">
+﻿// <copyright file="NullPlayer.cs" company="Telerik Academy">
 // Copyright (c) 2013 Telerik Academy. All rights reserved.
 // </copyright>
 namespace BullsAndCows
@@ -32,6 +32,7 @@ namespace BullsAndCows
             {
                 return this.name;
             }
+
             set 
             {
                 this.name = value;
@@ -47,6 +48,7 @@ namespace BullsAndCows
             {
                 return this.score;
             }
+
             set
             {
                 this.score = value;
