@@ -1,4 +1,4 @@
-﻿// <copyright file="BullsAndCowsTest.cs" company="Telerik Academy">
+﻿// <copyright file="BullsAndCows.cs" company="Telerik Academy">
 // Copyright (c) 2014 Telerik Academy. All rights reserved.
 // </copyright>
 namespace BullsAndCows
@@ -16,14 +16,8 @@ namespace BullsAndCows
         /// </summary>
         public static void Main()
         {
-            //BullsAndCows game = new BullsAndCows();
-            //game.Play();
-
             GameEngine gameEngine = GameEngine.Instance;
             gameEngine.Play();
-            
-            
-                       
         }
     }
 }
