@@ -54,7 +54,7 @@
     <Compile Include="NullPlayer.cs" />
     <Compile Include="NumbersComparer.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="ComandExecutor.cs" />
+    <Compile Include="CommandExecutor.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="GameEngine.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>

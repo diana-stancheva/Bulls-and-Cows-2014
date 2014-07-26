@@ -1,5 +1,5 @@
 ﻿// <copyright file="Scoreboard.cs" company="Telerik Academy">
-// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// Copyright (c) 2014 Telerik Academy. All rights reserved.
 // </copyright>
 namespace BullsAndCows
 {

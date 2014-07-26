@@ -1,9 +1,12 @@
-﻿namespace BullsAndCows
+﻿// <copyright file="CommandExecutor.cs" company="Telerik Academy">
+// Copyright (c) 2014 Telerik Academy. All rights reserved.
+// </copyright>
+namespace BullsAndCows
 {
     using System;
     using System.Text.RegularExpressions;
 
-    public static class ComandExecutor
+    public static class CommandExecutor
     {
         public static void Execute(Command command)
         {
