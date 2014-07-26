@@ -94,7 +94,7 @@ namespace BullsAndCows
         /// <summary>
         /// Gets numbers of bulls in the guess number
         /// </summary>
-        /// <returns>number of bulls</returns>
+        /// <returns>number of cows</returns>
         public int GetNumberOfBulls()
         {
             int bulls = 0;
