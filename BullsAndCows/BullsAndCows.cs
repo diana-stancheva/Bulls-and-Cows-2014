@@ -1,4 +1,4 @@
-﻿// <copyright file="BullsAndCows.cs" company="Telerik Academy">
+﻿// <copyright file="BullsAndCowsTest.cs" company="Telerik Academy">
 // Copyright (c) 2014 Telerik Academy. All rights reserved.
 // </copyright>
 namespace BullsAndCows
@@ -6,31 +6,24 @@ namespace BullsAndCows
     using System;
     using System.Linq;
 
+    /// <summary>
+    /// Tests BullsAndCows
+    /// </summary>
     public class BullsAndCows
-    {        
-        public void Play()
+    {
+        /// <summary>
+        /// The entry point of the program
+        /// </summary>
+        public static void Main()
         {
+            //BullsAndCows game = new BullsAndCows();
+            //game.Play();
+
             GameEngine gameEngine = GameEngine.Instance;
-
-            gameEngine.StartNewGame(new Player("player Name"));
-            //gameEngine.StartNewGame();
-
-            while (true)
-            {
-                gameEngine.ReadAction();
-            }
+            gameEngine.Play();
+            
+            
+                       
         }
-
-//        private IPlayer CreatePlayer(string name)
-//        {
-//            if (name.Length > NameMinLength || name.Length < NameMaxLength)
-//            {
-//                return new Player(name);
-//            }
-//            else
-//            {
-//                return new NullPlayer();
-//            }
-//        }
     }
 }
