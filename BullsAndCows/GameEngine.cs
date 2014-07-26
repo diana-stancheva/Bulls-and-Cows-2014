@@ -37,7 +37,7 @@ namespace BullsAndCows
         /// </summary>
         public static GameEngine Instance
         {
-            get 
+            get
             {
                 return instance;
             }
@@ -64,13 +64,18 @@ namespace BullsAndCows
         /// Starts new game
         /// </summary>
         /// <param name="player">player name</param>
-        public void StartNewGame(IPlayer player)
+        private void StartNewGame(IPlayer player)
         {
             Console.WriteLine("\nPlease enter your name for the new game: ");
             this.Username = Console.ReadLine().Trim();
 
             InterfaceMessages.PrintWelcomeMessage();
             InterfaceMessages.PrintCommandsInstructionsMessage();
+            this.Initialize(player);
+           
+        }
+        private void Initialize(IPlayer player)
+        {
             ////NumberGenerator prefferredGenerator = new StupidButSecureGenerator();
             NumberGenerator prefferredGenerator = new UserInputGenerator();
             ////NumberGenerator prefferredGenerator = new RandomGenerator();
@@ -81,11 +86,21 @@ namespace BullsAndCows
             this.MaskedNumber = new string(MaskChar, DigitsCount);
         }
 
+        public void Play()
+        {
+            this.StartNewGame(new Player("player Name"));
+            while (true)
+            {
+                ReadAction();
+            }
+
+
+        }
         /// <summary>
         /// Reads command from user input
         /// </summary>
         /// <returns></returns>
-        public void ReadAction()
+        private void ReadAction()
         {
             InterfaceMessages.PrintPromptMessage();
 
@@ -106,13 +121,13 @@ namespace BullsAndCows
 
             this.StartNewGame(new Player(this.Username));
         }
-        
+
         /// <summary>
         /// Checks if the guess number is equal to hidden number
         /// </summary>
         /// <param name="guessNumber">user input number</param>
-        public void ProcessGuess(int guessNumber)
-        { 
+        private void ProcessGuess(int guessNumber)
+        {
             if (guessNumber == this.Number)
             {
                 this.ProcessWin();
@@ -130,7 +145,7 @@ namespace BullsAndCows
         }
 
         #region
-        
+
         /// <summary>
         /// Executes the user command
         /// </summary>
@@ -151,44 +166,44 @@ namespace BullsAndCows
                 case "exit":
                     Environment.Exit(0);
                     break;
-                case "invalid command":
-                    Console.WriteLine("Invalid command!");
-                    break;
-                case "invalid number":
-                    Console.WriteLine("You have entered invalid number!");
-                    break;
+                //case "invalid command":
+                //    Console.WriteLine("Invalid command!");
+                //    break;
+                //case "invalid number":
+                //    Console.WriteLine("You have entered invalid number!");
+                //    break;
                 default:
                     if (this.IsValidGuessNumber(command))
                     {
                         int guess = int.Parse(command.CommandName);
-                        
+
                         this.ProcessGuess(guess);
                     }
                     else
                     {
                         InterfaceMessages.PrintInvalidCommandMessage();
                     }
-                    
                     break;
             }
         }
-        
+
         #endregion
-        
+
         /// <summary>
         /// Checks if user input is number or other command not
+        /// 
         /// </summary>
         /// <param name="command">command name</param>
         /// <returns>true or false</returns>
         private bool IsValidGuessNumber(Command command)
         {
             Regex guessNumberPattern = new Regex("^(\\d{4})$");
-            
+
             if (guessNumberPattern.IsMatch(command.CommandName))
             {
                 return true;
             }
-            
+
             return false;
         }
     }
