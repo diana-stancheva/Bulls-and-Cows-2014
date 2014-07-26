@@ -91,26 +91,25 @@ namespace BullsAndCows
             this.StartNewGame(new Player("player Name"));
             while (true)
             {
-                ReadAction();
+                Command currentCommand = this.ReadCommand();
+                this.ExecuteCommand(currentCommand);
             }
-
-
         }
         /// <summary>
         /// Reads command from user input
         /// </summary>
         /// <returns></returns>
-        private void ReadAction()
+        private Command ReadCommand()
         {
             InterfaceMessages.PrintPromptMessage();
 
             string line = Console.ReadLine().Trim();
 
             Command currentCommand = Command.Parse(line);
-            this.CommandExecution(currentCommand);
+            return currentCommand;
         }
 
-        public void ProcessWin()
+        private void ProcessWin()
         {
             InterfaceMessages.PrintCongratulationsMessage(this.CurrentPlayer.Attempts);
 
@@ -150,7 +149,7 @@ namespace BullsAndCows
         /// Executes the user command
         /// </summary>
         /// <param name="command">command name</param>
-        private void CommandExecution(Command command)
+        private void ExecuteCommand(Command command)
         {
             switch (command.CommandName)
             {
@@ -166,12 +165,6 @@ namespace BullsAndCows
                 case "exit":
                     Environment.Exit(0);
                     break;
-                //case "invalid command":
-                //    Console.WriteLine("Invalid command!");
-                //    break;
-                //case "invalid number":
-                //    Console.WriteLine("You have entered invalid number!");
-                //    break;
                 default:
                     if (this.IsValidGuessNumber(command))
                     {
