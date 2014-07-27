@@ -15,7 +15,7 @@ namespace BullsAndCows
 
         public static void PrintCommandsInstructionsMessage()
         {
-            string separator = new string('-', Console.WindowWidth-1);
+            string separator = new string('-', Console.WindowWidth - 1);
 
             Console.WriteLine("\nCommands:");
             Console.WriteLine(separator);
@@ -46,6 +46,11 @@ namespace BullsAndCows
         public static void PrintCongratulationsMessage(int attempts)
         {
             Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", attempts);
+        }
+
+        public static void PrintGoodbyeMessage()
+        {
+            Console.WriteLine("Thank you for playing “Bulls and Cows”!");
         }
     }
 }
