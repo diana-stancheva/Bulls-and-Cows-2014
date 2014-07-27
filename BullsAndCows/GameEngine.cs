@@ -83,7 +83,6 @@ namespace BullsAndCows
             //NumberGenerator prefferredGenerator = new UserInputGenerator();
             NumberGenerator prefferredGenerator = new RandomGenerator();
             this.Number = prefferredGenerator.GenerateValidNumber(MinNumber, MaxNumber);
-            Console.WriteLine(this.Number);/////////////////////////
             this.CurrentPlayer = player;
             this.CurrentPlayer.Attempts = 1;
             this.CurrentPlayer.HasCheated = false;
