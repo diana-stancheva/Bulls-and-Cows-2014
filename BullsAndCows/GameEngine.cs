@@ -55,6 +55,8 @@ namespace BullsAndCows
 
         public string Username { get; private set; }
 
+        public bool IsExitTriggered { get; private set; }
+
         /// <summary>
         /// Gets or sets current player
         /// </summary>
@@ -72,29 +74,35 @@ namespace BullsAndCows
             InterfaceMessages.PrintWelcomeMessage();
             InterfaceMessages.PrintCommandsInstructionsMessage();
             this.Initialize(player);
-           
+
         }
+
         private void Initialize(IPlayer player)
         {
-            ////NumberGenerator prefferredGenerator = new StupidButSecureGenerator();
-            NumberGenerator prefferredGenerator = new UserInputGenerator();
-            ////NumberGenerator prefferredGenerator = new RandomGenerator();
+            //NumberGenerator prefferredGenerator = new StupidButSecureGenerator();
+            //NumberGenerator prefferredGenerator = new UserInputGenerator();
+            NumberGenerator prefferredGenerator = new RandomGenerator();
             this.Number = prefferredGenerator.GenerateValidNumber(MinNumber, MaxNumber);
+            Console.WriteLine(this.Number);/////////////////////////
             this.CurrentPlayer = player;
             this.CurrentPlayer.Attempts = 1;
             this.CurrentPlayer.HasCheated = false;
+            this.IsExitTriggered = false;
             this.MaskedNumber = new string(MaskChar, DigitsCount);
         }
 
         public void Play()
         {
             this.StartNewGame(new Player("player Name"));
-            while (true)
+            while (!IsExitTriggered)
             {
                 Command currentCommand = this.ReadCommand();
                 this.ExecuteCommand(currentCommand);
             }
+
+            InterfaceMessages.PrintGoodbyeMessage();
         }
+
         /// <summary>
         /// Reads command from user input
         /// </summary>
@@ -143,8 +151,6 @@ namespace BullsAndCows
             }
         }
 
-        #region
-
         /// <summary>
         /// Executes the user command
         /// </summary>
@@ -163,7 +169,7 @@ namespace BullsAndCows
                     Help.RevealOneDigit(this.Number, this.MaskedNumber, MaskChar);
                     break;
                 case "exit":
-                    Environment.Exit(0);
+                    this.IsExitTriggered = true;
                     break;
                 default:
                     if (this.IsValidGuessNumber(command))
@@ -179,8 +185,6 @@ namespace BullsAndCows
                     break;
             }
         }
-
-        #endregion
 
         /// <summary>
         /// Checks if user input is number or other command not
