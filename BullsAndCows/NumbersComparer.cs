@@ -9,10 +9,8 @@ namespace BullsAndCows
     public class NumbersComparer
     {
         private const int NumberOfDigits = 4;
-        ////private const int MinNumber = 1000;
-        ////private const int MaxNumber = 9999;
-        private byte[] originalNumber;
-        private byte[] guessedNumber;
+        private int originalNumber;
+        private int guessedNumber;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NumbersComparer"/> class
@@ -21,14 +19,14 @@ namespace BullsAndCows
         /// <param name="guessedNumber">guess number</param>
         public NumbersComparer(int originalNumber, int guessedNumber)
         {
-            this.OriginalNumber = BitConverter.GetBytes(originalNumber);
-            this.GuessedNumber = BitConverter.GetBytes(guessedNumber);
+            this.OriginalNumber = originalNumber;
+            this.GuessedNumber = guessedNumber;
         }
 
         /// <summary>
         /// Gets or sets secret number
         /// </summary>
-        private byte[] OriginalNumber
+        private int OriginalNumber
         {
             get
             {
@@ -37,7 +35,7 @@ namespace BullsAndCows
 
             set
             {
-                if (value.Length != NumberOfDigits)
+                if ((value < 1000) || (9999 < value))
                 {
                     throw new ArgumentOutOfRangeException("Number must be between 1000 and 9999");
                 }
@@ -49,7 +47,7 @@ namespace BullsAndCows
         /// <summary>
         /// Gets or sets guess number
         /// </summary>
-        private byte[] GuessedNumber
+        private int GuessedNumber
         {
             get
             {
@@ -58,7 +56,7 @@ namespace BullsAndCows
 
             set
             {
-                if (value.Length != NumberOfDigits)
+                if ((value < 1000) || (9999 < value))
                 {
                     throw new ArgumentOutOfRangeException("Number must be between 1000 and 9999");
                 }
@@ -74,17 +72,23 @@ namespace BullsAndCows
         public int GetNumberOfCows()
         {
             int cows = 0;
+            string originalNumberStr = this.OriginalNumber.ToString();
+            string guessedNumberStr = this.GuessedNumber.ToString();
 
             for (int i = 0; i < NumberOfDigits; i++)
             {
                 ////check all digits EXCEPT the current (which, if equal, would make a bull)
-                for (int j = 0; (j < NumberOfDigits) && (j != i); j++)
+                for (int j = 0; j < NumberOfDigits; j++)
                 {
-                    if (this.OriginalNumber[i] == this.GuessedNumber[j])
+                    if (j != i)
                     {
-                        cows++;
-                        break;
+                        if (originalNumberStr[i] == guessedNumberStr[j])
+                        {
+                            cows++;
+                            break;
+                        }
                     }
+                  
                 }
             }
 
@@ -98,10 +102,12 @@ namespace BullsAndCows
         public int GetNumberOfBulls()
         {
             int bulls = 0;
+            string originalNumberStr = this.OriginalNumber.ToString();
+            string guessedNumberStr = this.GuessedNumber.ToString();
 
             for (int i = 0; i < NumberOfDigits; i++)
             {
-                if (this.OriginalNumber[i] == this.GuessedNumber[i])
+                if (originalNumberStr[i] == guessedNumberStr[i])
                 {
                     bulls++;
                 }
